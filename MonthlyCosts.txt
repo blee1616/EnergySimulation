@@ -1,0 +1,12 @@
+January,230.729
+February,203.947
+March,227.664
+April,229.157
+May,230.483
+June,227.054
+July,448.996
+August,461.781
+September,459.916
+October,227.891
+November,224.542
+December,225.458
