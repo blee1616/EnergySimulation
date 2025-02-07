@@ -8,8 +8,8 @@
 std::vector<double> monthCosts;
 std::vector<double> appliancesUsage(13);
 
-std::ofstream MonthlyCost;
-std::ofstream JoulesPerAppliance;
+std::ofstream MonthlyCost; //file used to store costs per month
+std::ofstream JoulesPerAppliance; //file used to store how many Joules were used per Appliance
 
 class Appliance {
 public:
@@ -20,14 +20,14 @@ public:
     Appliance(std::string name, double min_watts, double max_watts, int start_time, int end_time)
         : name(name), min_watts(min_watts), max_watts(max_watts), start_time(start_time), end_time(end_time) {}
 
-    double get_random_wattage() {
+    double get_random_wattage() { //uses uniform distribution in order to generate random wattage for electrical appliance given minimum and maximum amount of watts used.
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_real_distribution<> dis(min_watts, max_watts);
         return dis(gen);
     }
 
-    bool is_operating(int hour) {
+    bool is_operating(int hour) { //checks if appliance is on at that time
         return start_time <= hour && hour < end_time;
     }
 };
@@ -41,7 +41,7 @@ public:
         std::vector<double> usage_matrix;
     }
 
-    std::vector<double> calculate_daily_usage() {
+    std::vector<double> calculate_daily_usage() { //calculates the  daily usage based on appliance watts
         for (int hour = 0; hour < 24; hour++) {
             double total_usage = 0.0;
 
@@ -49,7 +49,7 @@ public:
                 if (appliances[i].is_operating(hour)) {
                     double appliance_wattage = appliances[i].get_random_wattage();
                     total_usage += appliance_wattage;
-                    appliancesUsage[i] += appliance_wattage;
+                    appliancesUsage[i] += appliance_wattage; //tracks how many Joules were used per appliance
                 }
             }
             usage_matrix.push_back(total_usage);
@@ -118,14 +118,16 @@ int main() {
         std::cout << " " << cost;
     }
 
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 11; i++) {
         MonthlyCost << monthCosts[i] << std::endl;
     }
-
-    for (int i = 0; i < 13; i++) {
+    MonthlyCost << monthCosts[11];
+    for (int i = 0; i < 12; i++) {
         JoulesPerAppliance << appliancesUsage[i] << std::endl;
     }
-
+    JoulesPerAppliance << appliancesUsage[12];
+    MonthlyCost.close();
+    JoulesPerAppliance.close();
     std::cout << std::endl;
     return 0;
 }

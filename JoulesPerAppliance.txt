@@ -1,13 +1,13 @@
-Refrigerator,108599
-Mini Fridge,14149.4
-Stove,17185.9
-Toaster & Microwave,86111.8
-Oven,30304.3
-Phone(s) & Tablet(s),9439.99
-Laptop(s),16915.6
-PC(s),58473.9
-TV(s),9027.9
-Lightbulbs (including lamps),13984.2
-Washing Machine,10802
-Dryer,29586.9
-AC,107631
+107776
+14499.4
+16927.8
+83513.4
+30748
+9270.52
+17224.6
+55820.4
+8954.39
+14223
+10979.5
+29818.7
+107526
